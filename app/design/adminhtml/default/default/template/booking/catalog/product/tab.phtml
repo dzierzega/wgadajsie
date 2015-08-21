@@ -1,0 +1,67 @@
+<?php
+/**
+ * Custom tab template
+ */
+$days=array('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday');
+$bookingConfig = $this->getConfiguration()->getData();
+$dailySchedule = $this->getDailySchedule();
+?>
+
+<div class="input-field">
+ <label for="from_date">From Date</label>
+ <input type="text" class="input-text" name="product[booking][from_date]" id="from_date" value="<?php echo $bookingConfig['from_date']?>"/>
+ <img src="http://127.0.0.1/wygadajsie/skin/adminhtml/default/default/images/grid-cal.gif" alt="" class="v-middle" id="from_date_trig" title="Select Date" style="">
+ 
+ <label for="to_date">To Date</label>
+ <input type="text" class="input-text" name="product[booking][to_date]" id="to_date"  value="<?php echo $bookingConfig['to_date']?>"/>
+ <img src="http://127.0.0.1/wygadajsie/skin/adminhtml/default/default/images/grid-cal.gif" alt="" class="v-middle" id="to_date_trig" title="Select Date" style="">
+ 
+ <hr style="margin-top:20px;" />
+ <br/>
+ <label for="time_slot">Booking Time Slot</label>
+ <input type="text" class="input-text required-entry" name="product[booking][slot_time]" id="time_slot" value="<?php echo $bookingConfig['slot_time']?>"  />
+ <br/>
+ 
+ <label for="buffer">Buffer time after each booking</label>
+ <input type="text" class="input-text required-entry" name="product[booking][buffer_time]" id="buffer" value="<?php echo $bookingConfig['buffer_time']?>" />
+ <br/>
+ <?php
+    foreach($days as $day){
+        ?>
+ <label for="buffer"><?php echo $day ?> Start time</label>
+ <input type="text" class="input-text required-entry" name="product[booking][days][<?php echo $day?>][start]" id="<?php echo $day?>_start" value="<?php echo $dailySchedule[$day]['start_time'] ?>" />
+ <br/>
+ <label for="buffer"><?php echo $day ?> End time</label>
+ <input type="text" class="input-text required-entry" name="product[booking][days][<?php echo $day?>][end]" id="<?php echo $day?>_end"  value="<?php echo $dailySchedule[$day]['end_time'] ?>"/>
+ <br/>
+ <?php
+    }
+ ?>
+
+ 
+</div>
+
+
+<script type="text/javascript">
+            //<![CDATA[
+                Calendar.setup({
+                    inputField: "from_date",
+                    ifFormat: "%Y-%m-%d",
+                   // ifFormat: "%d.%m.%Y",
+                    showsTime: false,
+                    button: "from_date_trig",
+                    align: "Bl",
+                    singleClick : true
+                });
+                
+                Calendar.setup({
+                    inputField: "to_date",
+                    ifFormat: "%Y-%m-%d",
+                    //ifFormat: "%d.%m.%Y",
+                    showsTime: false,
+                    button: "to_date_trig",
+                    align: "Bl",
+                    singleClick : true
+                });
+            //]]>
+</script>

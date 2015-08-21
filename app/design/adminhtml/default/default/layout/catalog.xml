@@ -78,6 +78,12 @@
         </block>
     </adminhtml_catalog_product_categories>
     
+    <adminhtml_configuration_configuration>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="booking/adminhtml_catalog_product_tab" name="booking.catalog.product.tab.configuration"/>
+        </block>
+    </adminhtml_configuration_configuration>
+    
     <adminhtml_catalog_product_reviews>
         <block type="core/text_list" name="root" output="toHtml">
             <block type="adminhtml/catalog_product_edit_tab_reviews" name="admin.product.reviews"/>

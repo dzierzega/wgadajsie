@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dudus_Booking>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Dudus_Booking>
+    </modules>
+</config>
